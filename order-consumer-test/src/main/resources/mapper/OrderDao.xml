@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.orderconsumertest.dao.OrderDao">
+    <insert id="insertOrder" parameterType="com.example.orderconsumertest.model.Order">
+        insert into tbl_order(orderid,username,shopName,money,success)
+        values(#{orderId},#{username},#{shopName},#{money},#{success})
+    </insert>
+    <update id="updateOrder" parameterType="com.example.orderconsumertest.model.Order">
+        update tbl_order set success=#{success} where orderId=#{orderId}
+    </update>
+    <select id="getOrderWhichSuccessFalse" resultType="com.example.orderconsumertest.model.Order">
+        select * from tbl_order where success=false
+    </select>
+
+</mapper>
